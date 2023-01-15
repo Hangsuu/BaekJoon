@@ -1,16 +1,28 @@
 package step.forwhile;
 
-import java.util.Scanner;
+import java.io.*;
 
 public class For10952 {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		while(true) {
-			int a = sc.nextInt();
-			int b = sc.nextInt();
-			if(a==0 && b==0) break;
-			System.out.println(a+b);
+			String s;
+			String[] sa;
+			try {
+				s = br.readLine();
+				sa = s.split(" ");
+			}
+			catch(Exception e) {
+				break;
+			}
+			
+			int a = Integer.parseInt(sa[0]);
+			int b = Integer.parseInt(sa[1]);
+			bw.write(a+b+"");
+			bw.newLine();
 		}
-		sc.close();
+		bw.flush();
+		bw.close();
 	}
 }
