@@ -27,7 +27,6 @@ public class Function25501 {
         else return recursion(s, l+1, r-1);
     }
     
-	
     public static String isPalindrome(String s){
         return recursion(s, 0, s.length()-1);
     }
