@@ -20,10 +20,11 @@ public class Number11050_1 {
     private static int findAnswer(int n, int k) {
         if(dp[n][k]>0) {
             return dp[n][k];
+            //배열 기본값 0이 아니면 사용
         }
         if(k==0 || n==k) {
-            return dp[n][k]=1;
+            return dp[n][k]=1; //파스칼삼각형 맨 윗줄 1 입력
         }
         return dp[n][k]=findAnswer(n-1, k-1) + findAnswer(n-1, k);
-    }
+    }	//윗줄 두개 합
 }
