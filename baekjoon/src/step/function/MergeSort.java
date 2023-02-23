@@ -14,6 +14,7 @@ public class MergeSort {
 		int mid=(int) Math.ceil(list.length/2.0);
 		int[] temp1 = Arrays.copyOfRange(list, 0, mid);
 		int[] temp2 = Arrays.copyOfRange(list, mid, list.length);
+		
 		return mergeSort(merge(temp1), merge(temp2));
 	}
 	
