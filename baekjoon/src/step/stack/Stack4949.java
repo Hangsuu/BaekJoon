@@ -5,47 +5,35 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.Stack;
 
-public class Stack9012 {
+public class Stack4949 {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		while(true) {
+		int n = Integer.parseInt(br.readLine());
+		for(int i=0; i<n; i++) {
 			int m=0;
-			Stack<String> stack = new Stack<>();
 			String[] s = br.readLine().split("");
-			if(s.length==1 && s[0].equals(".")) break;
 			for(int j=0; j<s.length; j++) {
-				switch(s[j]) {
-				case "(" : stack.push("(");
-					break;
-				case "[" : stack.push("[");
-					break;
-				case ")" :
-					if(stack.size()>0 && stack.pop().equals("(")) {
+				String temp = s[j];
+				if(temp.equals("(")){
+					m++;
+				}
+				else{
+					if(m>0) {
+						m--;
 					}
 					else {
 						m++;
 						j=s.length;
 					}
-					break;
-				case "]" :
-					if(stack.size()>0 && stack.pop().equals("[")) {
-					}
-					else {
-						m++;
-						j=s.length;
-					}
-					break;
-				default : 
 				}
 			}
-			if(m==0 && stack.size()==0) {
-				bw.write("yes\n");
+			if(m==0) {
+				bw.write("YES\n");
 			}
 			else {
-				bw.write("no\n");
+				bw.write("NO\n");
 			}
 		}
 		bw.close();
