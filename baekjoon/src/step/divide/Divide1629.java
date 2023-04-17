@@ -12,24 +12,24 @@ public class Divide1629 {
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		String[] s = br.readLine().split(" ");
 		long a = Long.parseLong(s[0]);
-		int n = Integer.parseInt(s[1]);
+		long n = Long.parseLong(s[1]);
 		long c = Long.parseLong(s[2]);
 		
 		bw.write(rest(a, n, c)+"");
 		bw.close();
 		br.close();
 	}
-	public static long rest(long a, int n, long c) {
-		if(n==0) {
-			return 1;
+	public static long rest(long a, long n, long c) {
+		if(n==0L) {
+			return 1L%c;
 		}
-		else if (n%2==0) {
-			long temp = rest(a, n/2, c);
+		else if (n%2L==0L) {
+			long temp = rest(a, n/2L, c);
 			return (temp*temp)%c;
 		}
 		else {
-			long temp = rest(a, (n-1)/2, c);
-			return (a*temp*temp)%c;
+			long temp = rest(a, (n-1L)/2L, c);
+			return (((a*temp)%c)*temp)%c;
 		}
 	}
 }
