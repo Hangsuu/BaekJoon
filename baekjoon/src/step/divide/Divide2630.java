@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
-public class divide2630 {
+public class Divide2630 {
 	private static int white=0;
 	private static int blue=0;
 	
