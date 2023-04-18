@@ -7,27 +7,39 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 public class Divide11401 {
-	private static int[][] arr;
+	private static long p = 1000000007;
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		String[] s = br.readLine().split(" ");
-		int n = Integer.parseInt(s[0]);
-		int k = Integer.parseInt(s[1]);
-		arr=new int[n+1][n+1];
-		bw.write(pascal(n, k)+"");
+		long n = Long.parseLong(s[0]);
+		long k = Long.parseLong(s[1]);
+		
+		long top = factorial(n);
+		long bottom = factorial(k)*factorial(n-k)%p;
+		bw.write((top*pow(bottom, p-2)%p)+"");
+		
 		bw.close();
 		br.close();
 	}
-	private static int pascal(int n, int k) {
-		if(arr[n][k]==0) {
-			if(k==0 || k==n) {
-				arr[n][k]=1;
-			}
-			else {
-				arr[n][k]=(pascal(n-1, k-1)+pascal(n-1, k))%1000000007;
-			}
+	private static long factorial(long n) {
+		long num=1L;
+		for(long i=1; i<=n; i++) {
+			num=num*i%p;
 		}
-		return arr[n][k];
+		return num;
+	}
+	private static long pow(long num, long n) {
+		if(n==0L) {
+			return 1L;
+		}
+		else if (n%2L==0L) {
+			long temp = pow(num, n/2L)%p;
+			return (temp*temp)%p;
+		}
+		else {
+			long temp = pow(num, (n-1L)/2L);
+			return (((num*temp)%p)*temp)%p;
+		}
 	}
 }
