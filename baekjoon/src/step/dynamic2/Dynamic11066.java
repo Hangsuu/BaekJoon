@@ -5,6 +5,9 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.Collections;
+import java.util.PriorityQueue;
+import java.util.StringTokenizer;
 
 public class Dynamic11066 {
 	static long[] arr = new long[101];
@@ -14,24 +17,18 @@ public class Dynamic11066 {
 		int t = Integer.parseInt(br.readLine());
 		for(int i=0; i<t; i++) {
 			int n = Integer.parseInt(br.readLine());
-			bw.write(tri(n)+"\n");
+			StringTokenizer st = new StringTokenizer(br.readLine());
+			PriorityQueue<Integer> heap = new PriorityQueue<>();
+			for(int j=0; j<n; j++) {
+				heap.add(Integer.parseInt(st.nextToken()));
+			}
+			int sum=0;
+			for(int j=0; j<n-1; j++) {
+				heap.add(heap.poll()+heap.poll());
+			}
+			bw.write(heap.poll()+"\n");
 		}
 		bw.close();
 		br.close();
-	}
-	
-	static long tri(int n) {
-		if(n==1 || n==2 || n==3) {
-			return 1L;
-		}
-		if(n==4 || n==5) {
-			return 2L;
-		}
-		else {
-			if(arr[n-1]==0)arr[n-1]=tri(n-1);
-			if(arr[n-5]==0)arr[n-5]=tri(n-5);
-			arr[n]=arr[n-1]+arr[n-5];
-			return arr[n];
-		}
 	}
 }
