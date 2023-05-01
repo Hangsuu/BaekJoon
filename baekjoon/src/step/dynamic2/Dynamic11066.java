@@ -15,24 +15,18 @@ public class Dynamic11066 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		int t = Integer.parseInt(br.readLine());
-		for(int i=0; i<t; i++) {
+		for(int k=0; k<t; k++) {
 			int n = Integer.parseInt(br.readLine());
 			StringTokenizer st = new StringTokenizer(br.readLine());
 			int[] arr = new int[n];
-			PriorityQueue<Integer> heap = new PriorityQueue<>();
+			int[][] dp = new int[n][n];
 
-			for(int j=0; j<n; j++) {
-				heap.add(Integer.parseInt(st.nextToken()));
+			for(int i=0; i<n; i++) {
+				int temp = Integer.parseInt(st.nextToken());
+				arr[i] = temp;
+				dp[i][i] = temp;
 			}
-			int sum=0;
 			
-			while(heap.size()>1) {
-				int temp = heap.poll()+heap.poll();
-				sum+=temp;
-				heap.add(temp);
-				System.out.println(temp+", "+sum);
-			}
-			bw.write(sum+"\n");
 		}
 		bw.close();
 		br.close();
