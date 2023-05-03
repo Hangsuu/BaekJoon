@@ -1,4 +1,4 @@
-package step.dfs;
+package step.dfsBfs;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
