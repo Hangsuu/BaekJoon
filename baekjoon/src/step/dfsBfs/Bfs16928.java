@@ -29,8 +29,7 @@ public class Bfs16928 {
 			int y = Integer.parseInt(temp[1]);
 			map.put(x, y);
 		}
-		arr[1]=true;
-		queue.add(1);
+		riding(1);
 		bfs();
 		
 		bw.write(count+"");
@@ -38,29 +37,32 @@ public class Bfs16928 {
 		br.close();
 	}
 	private static void bfs() {
-		count++;
 		int size = queue.size();
+		if(size==0 || map.containsKey(1) && map.get(1)==100) return;
+		count++;
 		for(int i=0; i<size; i++) {
 			int poll = queue.poll();
 			for(int j=1; j<=6; j++) {
 				int temp = poll+j;
 				if(temp==100) return;
-				if(!arr[temp]) {
-					queue.add(temp);
-					arr[temp]=true;
-					while(map.containsKey(temp)) {
-						int tempNum = map.get(temp);
-						arr[tempNum]=true;
-						if(!map.containsKey(tempNum)) {
-							queue.add(tempNum);
-						}
-						else {
-							temp=tempNum;
-						}
-						if(tempNum==100) return;
-					}
+				if(temp<=100 && !arr[temp]) {
+					riding(temp);
+					if(arr[100]) return;
 				}
 			}
+		}
+		bfs();
+	}
+	private static void riding(int n) {
+		arr[n]=true;
+		if(map.containsKey(n)) {
+			int temp=map.get(n);
+			arr[temp]=true;
+			riding(temp);
+		}
+		else {
+			queue.add(n);
+			return;
 		}
 	}
 }
