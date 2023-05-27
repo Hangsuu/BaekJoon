@@ -10,22 +10,19 @@ public class Test {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		StringBuffer sb = new StringBuffer();
-		String[][] arr= new String[5][15];
-		for(int i=0; i<5; i++) {
-			String[] s = br.readLine().split("");
-			for(int j=0; j<s.length; j++) {
-				arr[i][j]=s[j];
-			}
-		}
-		for(int i=0; i<15; i++) {
-			for(int j=0; j<5; j++) {
-				if(arr[j][i]!=null) {
-					sb.append(arr[j][i]);
+		int count=0;
+		int num=1;
+		for(int i=0; i<8; i++) {
+			String[] temp = br.readLine().split("");
+			for(int j=0; j<8; j++) {
+				if(num%2==1 && temp[j].equals("F")) {
+					count++;
 				}
+				num++;
 			}
+			num++;
 		}
-		bw.write(sb.toString());
+		bw.write(count+"");
 		bw.close();
 		br.close();
 	}
