@@ -12,7 +12,7 @@ public class Etc1402 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));	
 		int t = Integer.parseInt(br.readLine());
-		boolean[] arr = new boolean[t+1];
+		boolean[] arr = new boolean[101];
 		int count=0;
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		for(int i=0; i<t; i++) {
